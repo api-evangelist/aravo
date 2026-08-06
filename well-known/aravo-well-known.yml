@@ -1,0 +1,85 @@
+generated: '2026-08-06'
+method: probed
+source: live GET probes of /.well-known/* on every Aravo host known to the profile
+note: 'Aravo Solutions publishes no developer host (developer/docs/api.aravo.com do not resolve).
+  The only machine-readable discovery document found on an Aravo host is the OpenID Connect
+  configuration served by the Salesforce Experience Cloud customer portal at aravo.my.site.com.
+  It describes the portal login IdP, NOT a documented Aravo product API — it is recorded here
+  as observed discovery surface only, and no Authentication or OAuthScopes artifact is derived
+  from it.'
+hosts:
+- host: https://aravo.com
+  platform: WordPress marketing site
+  control_probe:
+    path: /.well-known/does-not-exist-xyz
+    status: 404
+    note: control path 404s, so the 404s below are real misses and not a catch-all
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+  - path: /openapi.json
+    status: 404
+  - path: /openapi.yaml
+    status: 404
+  - path: /swagger.json
+    status: 404
+  - path: /api-docs
+    status: 404
+  - path: /robots.txt
+    status: 200
+  - path: /sitemap.xml
+    status: 200
+- host: https://aravo.my.site.com
+  platform: Salesforce Experience Cloud (Aravo Customer Portal)
+  control_probe:
+    path: /.well-known/does-not-exist-xyz
+    status: 401
+    content_type: text/html
+    note: 'catch-all answers 401 HTML, so the 200 application/json hit below is a real document
+      and not soft-404 credit'
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    content_type: application/json
+    file: aravo-openid-configuration.json
+    scope: Salesforce Experience Cloud portal login IdP (issuer https://aravo.my.site.com)
+  - path: /.well-known/security.txt
+    status: 401
+  - path: /.well-known/agent-card.json
+    status: 401
+  - path: /.well-known/agent.json
+    status: 401
+  - path: /openapi.json
+    status: 401
+  - path: /s/
+    status: 200
+    note: redirects (301 then JS) to /login?ec=302 — the portal is login-gated
+x-evidence:
+  fetched: '2026-08-06'
+  probes:
+  - url: https://aravo.com/.well-known/security.txt
+    http_status: 404
+  - url: https://aravo.com/.well-known/agent-card.json
+    http_status: 404
+  - url: https://aravo.my.site.com/.well-known/openid-configuration
+    http_status: 200
+    content_type: application/json
+  - url: https://aravo.my.site.com/.well-known/does-not-exist-xyz
+    http_status: 401
+    content_type: text/html

@@ -1,23 +1,97 @@
 aid: aravo
 name: Aravo
-description: 'Aravo is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'Aravo Solutions is a San Francisco based enterprise software company providing
+  third-party risk management (TPRM), supplier and procurement risk management, and governance,
+  risk and compliance software. Its Intelligence First platform covers vendor nomination and
+  intake, onboarding, due diligence, continuous monitoring, contracts, performance management,
+  issue remediation and offboarding, with risk-domain applications for anti-bribery and
+  corruption, data privacy and GDPR, information security, ESG, DORA and the German Supply
+  Chain Due Diligence Act (LkSG). Aravo markets an integration framework that exchanges data
+  with ERP, procure-to-pay, accounts payable and GRC systems, and with risk-intelligence
+  providers including Refinitiv World-Check One, LexisNexis, Dow Jones, BitSight,
+  SecurityScorecard, RapidRatings and Dun & Bradstreet, over SOAP and REST web-services APIs in
+  XML and JSON. That API surface is described only on marketing pages; the reference
+  documentation sits behind the login-gated Aravo customer portal.'
+image: https://aravo.com/wp-content/themes/aravo/img/logo-desktop-v2.svg
 url: https://raw.githubusercontent.com/api-evangelist/aravo/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-06'
 modified: '2026-08-06'
 tags:
 - Company
+- Third-Party Risk Management
+- Supplier Risk Management
+- Governance Risk and Compliance
+- Vendor Management
+- Continuous Monitoring
+- Compliance
+- Enterprise Software
 apis: []
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-disambiguation:
+  note: 'Aravo Solutions (aravo.com, third-party risk management) is a DIFFERENT company from
+    aravo.app, a time-tracking product that publishes the `aravo-agent` npm CLI and an MCP
+    server at https://aravo.app/api/mcp. Do not wire aravo.app packages, MCP or agent
+    artifacts into this repo.'
+  checked: '2026-08-06'
 common:
+- type: DomainSecurity
+  url: security/aravo-domain-security.yml
 - type: Website
-  url: https://forgeglobal.com/aravo_stock/
+  url: https://aravo.com/
+- type: CustomerPortal
+  url: https://aravo.my.site.com/
+- type: Support
+  url: https://aravo.com/contact-us/
+- type: Blog
+  url: https://aravo.com/blog/
+- type: BlogRSS
+  url: https://aravo.com/feed/
+- type: PrivacyPolicy
+  url: https://aravo.com/lp/aravo-solutions-privacy-policy/
+- type: Press
+  url: https://aravo.com/press-releases/
+- type: Partners
+  url: https://aravo.com/partner-integrations/
+- type: LinkedIn
+  url: https://www.linkedin.com/company/aravo-solutions/
+- type: Twitter
+  url: https://twitter.com/aravo
+- type: YouTube
+  url: https://www.youtube.com/channel/UCwMoKa7-Zznupeinre7h4qw
+- type: WellKnown
+  url: well-known/aravo-well-known.yml
+- type: Conformance
+  url: conformance/aravo-conformance.yml
+- type: LLMsTxt
+  url: llms/aravo-llms.txt
+x-enrichment:
+  date: '2026-08-06'
+  status: minimal
+  artifacts_added: 5
+  pass: local-v1
+x-coverage:
+  state: gated
+  reason: customer-only-docs
+  detail: 'Aravo publishes no developer host (developer/docs/api.aravo.com all NXDOMAIN) and its
+    only API documentation sits inside the Aravo Customer Portal, a Salesforce Experience Cloud
+    site whose every path 301s then JS-redirects to https://aravo.my.site.com/login?ec=302, so
+    the SOAP/REST integration framework it markets is describable only from marketing prose.'
+  evidence:
+  - url: https://aravo.my.site.com/s/
+    status: 301
+  - url: https://aravo.my.site.com/.well-known/openid-configuration
+    status: 200
+  - url: https://aravo.com/.well-known/agent-card.json
+    status: 404
+  - url: https://aravo.com/openapi.json
+    status: 404
+  - url: https://aravo.com/llms.txt
+    status: 404
+  checked: '2026-08-06'
