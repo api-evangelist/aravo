@@ -1,0 +1,21 @@
+{
+  "repo": "aravo",
+  "feeds": [
+    {
+      "source": "https://aravo.com/contact-us/",
+      "feed_url": "https://aravo.com/contact-us/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    },
+    {
+      "source": "https://aravo.com/blog/",
+      "feed_url": "https://aravo.com/blog/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-08-15T12:22:01Z"
+}
