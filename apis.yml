@@ -12,6 +12,17 @@ description: 'Aravo Solutions is a San Francisco based enterprise software compa
   SecurityScorecard, RapidRatings and Dun & Bradstreet, over SOAP and REST web-services APIs in
   XML and JSON. That API surface is described only on marketing pages; the reference
   documentation sits behind the login-gated Aravo customer portal.'
+deliveryModel:
+  model: unknown
+  open_source: false
+  commercial: false
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - none
+  generated: '2026-08-28'
+  method: derived
 image: https://aravo.com/wp-content/themes/aravo/img/logo-desktop-v2.svg
 url: https://raw.githubusercontent.com/api-evangelist/aravo/refs/heads/main/apis.yml
 x-type: company
